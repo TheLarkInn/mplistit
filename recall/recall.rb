@@ -9,6 +9,7 @@ require 'data_mapper'
 require 'dm-is-reflective'
 require 'dm-validations'
 # require 'thin'
+# require 'spencer'
 
 set :port, 80
 
