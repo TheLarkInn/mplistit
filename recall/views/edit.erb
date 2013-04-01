@@ -1,9 +1,15 @@
 <% if @post %>
-	<form action="/<%= @post.post_id %>" method="post" id="edit">
+	<form action="/<%= @post.post_id %>" method="post">
 		<input type="hidden" name="_method" value="put">
-		<textarea name="content"><%=h @post.long_description %></textarea>
-		<input type="checkbox" name="complete" <%= "checked" if @post.complete %>>
-		<input type='submit'>
+		<section id="shortdesc">
+			<textarea name="short_description"><%=h @post.short_description %></textarea>
+		</section>
+		<section id="add">
+			<textarea name="long_description"><%=h @post.long_description %></textarea>
+		</section>
+		<section id="contact">
+			<input type='Submit'>
+		</section>
 	</form>
 <p><a href="/<%= @post.post_id %>/delete">Delete</a></p>
 <% else %>

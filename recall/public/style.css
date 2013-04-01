@@ -49,6 +49,8 @@ header h2 {
 	width: 615px;
 	padding: 10px;
 	border: 1px solid #ddd;
+	resize: none;
+	overflow: auto;
 }
 
 #shortdesc textarea {
@@ -56,6 +58,7 @@ header h2 {
 	width: 623px;
 	padding-left: 10px;
 	border: 1px solid #ddd;
+	resize: none;
 }
 
 #contact textarea {
@@ -63,7 +66,7 @@ header h2 {
 	width: 518px;
 	padding-left: 10px;
 	border: 1px solid #ddd;
-	margin: 0 0 20px;
+	resize: none;
 
 }
 
@@ -78,9 +81,9 @@ header h2 {
 }
 
 #edit textarea {
-	height: 30px;
-	width: 480px;
-	padding: 10px;
+	height: 15px;
+	width: 623px;
+	padding-left: 10px;
 	border: 1px solid #ddd;
 }
 
@@ -120,7 +123,11 @@ article.complete {
 }
 
 article span {
-	font-size: 0.8em;
+	color: darkblue;
+}
+
+span.id{
+	color: black;
 }
 
 p {
