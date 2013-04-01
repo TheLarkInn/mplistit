@@ -1,0 +1,11 @@
+<% if @post %>
+	<form action="/<%= @post.post_id %>" method="post" id="edit">
+		<input type="hidden" name="_method" value="put">
+		<textarea name="content"><%=h @post.long_description %></textarea>
+		<input type="checkbox" name="complete" <%= "checked" if @post.complete %>>
+		<input type='submit'>
+	</form>
+<p><a href="/<%= @post.post_id %>/delete">Delete</a></p>
+<% else %>
+	<p>Post not found.</p>
+<% end %>

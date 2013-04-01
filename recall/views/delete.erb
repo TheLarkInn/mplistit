@@ -1,0 +1,11 @@
+<% if @post %>
+	<p>Are you sure you want to delete the folloiwng Post: <em>"<%= @post.long_description %>"</em>?
+	</p>
+	<form action="/<%= @post.post_id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="Yes, Delete It!">
+		<a href="/<%= @post.post_id %>">Cancel</a>
+	</form>
+<% else %>
+	<p>Post not found.</p>
+<% end %>

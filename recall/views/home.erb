@@ -1,0 +1,20 @@
+<section id="add">
+	<form action="/" method="post">
+		<textarea name="long_description" placeholder="Your Post&hellip;"></textarea>
+		<input type="submit" value="Post It!">
+	</form>
+</section>
+
+
+<% @posts.each do |post| %>
+<article <%= 'class="complete"' if post.complete %>>
+	<p>
+		<%=h post.long_description %>
+		<span><a href="/<%= post.post_id %>">[edit]</a></span>
+    </p>
+    <p class="links">
+    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
+    </p>
+    <p class="meta">Created By <%= post.user %>: <%= post.posted_date %></p>
+</article>
+<% end %>
