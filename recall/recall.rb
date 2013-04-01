@@ -61,7 +61,6 @@ get '/:post_id' do
 	@post = Post.get params[:post_id]
 	@user = Post.get params[:user]
 	@title = "Edit Post ##{params[:post_id]}"
-	erb :Edit
 
 	if @user != Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize
 		redirect '/'
@@ -70,7 +69,7 @@ get '/:post_id' do
 	end
 end
 
-put '/:post_id' do
+post '/:post_id' do
 	n = Post.get params[:post_id]
 	n.long_description = params[:long_description]
 	n.short_description = params[:short_description]
