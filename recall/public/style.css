@@ -1,3 +1,17 @@
+/*div.container{
+	width:570px; 
+	padding:30px; 
+	overflow:auto; 
+	background:url(http://allroundnews.com/wp-content/uploads/2012/02/seamless-wood-texture-free-75.jpg); background-repeat:repeat-y; margin:20px auto;
+  /* rounded corners
+  -webkit-border-radius: 12px; 
+    -moz-border-radius: 12px;   
+    border-radius: 12px; 
+    border:2px solid #b5895e;
+} */
+
+
+
 body {
 	margin: 35px auto;
 	width: 640px;
@@ -28,30 +42,39 @@ header h2 {
 	margin: 0 0 20px;
 }
 
-#add {
-	margin: 0 0 20px;
-}
+
 
 #add textarea {
 	height: 30px;
-	width: 510px;
+	width: 615px;
 	padding: 10px;
 	border: 1px solid #ddd;
 }
 
 #shortdesc textarea {
 	height: 15px;
-	width: 510px;
-	padding: 10px;
+	width: 623px;
+	padding-left: 10px;
 	border: 1px solid #ddd;
 }
 
-#add input {
-	height: 50px;
-	width: 100px;
-	margin: -50px 0 0;
+#contact textarea {
+	height: 15px;
+	width: 518px;
+	padding-left: 10px;
 	border: 1px solid #ddd;
+	margin: 0 0 20px;
+
+}
+
+#contact input {
+	height: 21px;
+	width: 101px;
+	margin: 0px 0px 0px;
+	border: 1px solid #ddd;
+	padding-left: 10px;
 	background: white;
+	vertical-align: top
 }
 
 #edit textarea {
@@ -78,6 +101,8 @@ article {
 	border: 1px solid #eee;
 	border-top: none;
 	padding: 15px 10px;
+	background: #fafafa;
+
 }
 
 article:first-of-type {
@@ -85,8 +110,10 @@ article:first-of-type {
 }
 
 article:nth-child(even) {
-	background: #fafafa;
+	background: #EFF2FB;
+	border: 1px solid #eee;
 }
+
 
 article.complete {
 	background: #fedae3;
@@ -102,11 +129,13 @@ p {
 
 p.title {
 	font-size: 1.5em;
-	font-style: bold;
+	font-style: bold, italic;
 }
 
 p.longdescription {
 	margin-left: 10px;
+	overflow: auto;
+	height: 60px;
 }
 
 .meta {

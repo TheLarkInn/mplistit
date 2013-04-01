@@ -26,6 +26,7 @@ dm.resource_naming_convention = DataMapper::NamingConventions::Resource::Undersc
 		property :updated_date, DateTime
 		property :user, Text
 		property :contact, Text, :required => true
+		property :price, Float, :required => true
 	end
 
 DataMapper.finalize.auto_upgrade!
@@ -47,6 +48,7 @@ post '/' do
 	n.long_description = params[:long_description]
 	n.short_description = params[:short_description]
 	n.contact = params[:contact]
+	n.price = params[:price]
 	n.posted_date = Time.now
 	n.updated_date = Time.now
 	n.user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize

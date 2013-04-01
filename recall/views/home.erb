@@ -1,35 +1,36 @@
-
-	<form action="/" method="post">
+	<form action="/" method="post" id="postbutton">
 		<section id="shortdesc">
 			<textarea name="short_description" placeholder="Title&hellip;"></textarea>
 		</section>
 		<section id="add">
 			<textarea name="long_description" placeholder="Your Post&hellip;"></textarea>		
-			<input type="submit" value="Post It!">
 		</section>
-		<section id="shortdesc">
+		<section id="contact">
 			<textarea name="contact" placeholder="Preferred method of contact&hellip;"></textarea>
+			<input type="submit" value="Post It!" id="postit">
 		</section>
+		
+				
 	</form>
 
+	<% current_user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>
+	<% @posts.each do |post| %>
+	<article >
+		<p class="title">
+			<%=h post.short_description %>
+		</p>
+
+		<p class="longdescription">		
+			<%=h post.long_description %>
+			<span><a <%= 'style="display:none"' if current_user != post.user %> href="/<%= post.post_id %>">[edit]</a></span>
+	    </p>
+	    <!--<p class="links">
+	    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
+	    </p>-->
+	    
+	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <br> Preferred Contact Info: <%= post.contact %></p>
+
+	</article>
+	<% end %>
 
 
-<% @posts.each do |post| %>
-<article <%= 'class="complete"' if post.complete %>>
-	<p class="title">
-		<%=h post.short_description %>
-	</p>
-
-	<p class="longdescription">		
-		<%=h post.long_description %>
-		<span><a href="/<%= post.post_id %>">[edit]</a></span>
-    </p>
-
-    <p class="links">
-    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
-    </p>
-
-    <p class="meta">Created By <%= post.user %>: <%= post.posted_date %> Preferred Contact Info: <%= post.contact %></p>
-
-</article>
-<% end %>
