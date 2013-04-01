@@ -9,8 +9,6 @@
 			<textarea name="contact" placeholder="Preferred method of contact&hellip;"></textarea>
 			<input type="submit" value="Post It!" id="postit">
 		</section>
-		
-				
 	</form>
 
 	<% current_user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>
@@ -28,8 +26,8 @@
 	    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
 	    </p>-->
 	    
-	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <br> Preferred Contact Info: <%= post.contact %></p>
 	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>>Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%= post.contact %></p>
+
 
 	</article>
 	<% end %>
