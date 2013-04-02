@@ -1,13 +1,16 @@
 <% if @post %>
 	<form action="/<%= @post.post_id %>" method="post">
-		<input type="hidden" name="_method" value="put">
 		<section id="shortdesc">
+			<input type="hidden" name="_method" value="put">
 			<textarea name="short_description"><%=h @post.short_description %></textarea>
 		</section>
+
 		<section id="add">
 			<textarea name="long_description"><%=h @post.long_description %></textarea>
 		</section>
+
 		<section id="contact">
+			<textarea name="contact"><%=h @post.contact %></textarea>
 			<input type='Submit'>
 		</section>
 	</form>

@@ -27,7 +27,7 @@
 	    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
 	    </p>-->
 	    
-	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>>Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%= post.contact %></p>
+	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>> - Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%= post.contact %></p>
 
 
 	</article>

@@ -8,6 +8,7 @@ require 'dm-core'
 require 'data_mapper'
 require 'dm-is-reflective'
 require 'dm-validations'
+
 # require 'thin'
 # require 'spencer'
 
@@ -22,7 +23,6 @@ dm.resource_naming_convention = DataMapper::NamingConventions::Resource::Undersc
 		property :post_id, Serial
 		property :long_description, Text, :required => true
 		property :short_description, Text, :required => true
-		property :complete, Boolean, :required => true, :default => false
 		property :posted_date, DateTime
 		property :updated_date, DateTime
 		property :user, Text
@@ -58,8 +58,9 @@ end
 get '/:post_id' do
 	@post = Post.get params[:post_id]
 	@title = "Edit Post ##{params[:post_id]}"
-	
-	if @post.user != Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize
+	if @post == nil 
+		redirect '/'
+	elsif @post.user != Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize
 		redirect '/'
 	else
 		erb :Edit
@@ -71,7 +72,6 @@ put '/:post_id' do
 	n.long_description = params[:long_description]
 	n.short_description = params[:short_description]
 	n.contact = params[:contact]
-	n.complete = params[:complete] ? 1 : 0
 	n.updated_date = Time.now
 	n.save
 	redirect '/'
