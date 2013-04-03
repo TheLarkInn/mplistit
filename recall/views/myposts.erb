@@ -1,0 +1,23 @@
+<h1 style='text-align:center' class='whosposts'>You are viewing all of <%= params[:user] %>'s Posts!!! <br></h1> <h3 style='text-align:center' class ='h3class'>Click "All Posts" to return to all listings, or select "My Posts" to return to your listings.</h3> 
+
+<% current_user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>
+
+<% @posts.each do |post| %>
+
+<article >
+	<p class="title">
+		<%=h post.short_description %>
+	</p>
+
+	<p class="longdescription">		
+		<%=h post.long_description %>
+		<span><a <%= 'style="display:none"' if current_user != post.user %> href="/<%= post.post_id %>">[edit]</a></span>
+    </p>
+    <!--<p class="links">
+    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
+    </p>-->
+    
+    <p class="meta">Created By <a href='http://172.27.13.175/user/<%= post.user %>'><%= post.user %></a>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>> - Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%=h post.contact %></p>
+</article>
+
+<% end %>

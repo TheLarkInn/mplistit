@@ -6,19 +6,33 @@
 	<link href="/reset.css" rel="stylesheet">
 	<link href="/style.css" rel="stylesheet">
 </head>
+
 <body>
 	<header>
 		<hgroup>
 			<h1><a href="/">MacPractice List-It!</a></h1>
 			<h2>MacPractice Listings</h2>
+			<a href="/">[All posts]</a>
+			<a href="/user/<%= Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>">[My Posts]</a>
+			
 		</hgroup>
 	</header>
+	<!-- Left Container Div Where Posts are displayed-->
+	<!-- <div id="left">
+		Hello
+	</div> -->
+	<!-- Main Div Where Posts are displayed-->
 	<div id="main">
 		<%= yield %>
 	</div>
+	<!-- Right Container Div Where Posts are displayed-->
+	<!-- <div id="right">
+		adsf
+	</div> -->
+	
 
 	<footer>
-		<p><small>An app for <a href="http://net.tutsplus.com">Nettuts+</a>.</small></p>  
+		<p><small>An app for <a href="http://support.macpractice.net">MacPractice, Inc.</a>.</small></p>  
 	</footer>  
 </body>  
 </html>  

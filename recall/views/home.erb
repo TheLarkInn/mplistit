@@ -1,36 +1,60 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() { 
+	$("#postit1").css("cursor","default");
+	$("#postit1").css("color","#ddd");//THANKS BLAINE FOR THE JQUERY!!!
+	$("#shortdesc1,#longdesc1,#contact1").keyup(function(){
+
+
+	          if ($('#shortdesc1').val().trim().length > 0 &&
+	          	  $('#longdesc1').val().trim().length > 0 &&
+	          	  $('#contact1').val().trim().length > 0) {
+	              $("#postit1").removeAttr("disabled");
+	          	  $("#postit1").css("color", "");
+	          	  $("#postit1").css("cursor","pointer");
+	          } else {
+	              $("#postit1").attr("disabled", "true");
+	              $("#postit1").css("color","#ddd");
+	              $("#postit1").css("cursor","default");
+
+	          }
+	      });
+	});
+	</script>
 	
-	<form action="/" method="post" id="postbutton">
-		<section id="shortdesc">
-			<textarea name="short_description" placeholder="Title&hellip;"></textarea>
-		</section>
-		<section id="add">
-			<textarea name="long_description" placeholder="Your Post&hellip;"></textarea>		
-		</section>
-		<section id="contact">
-			<textarea name="contact" placeholder="Preferred method of contact&hellip;"></textarea>
-			<input type="submit" value="Post It!" id="postit">
-		</section>
-	</form>
 
-	<% current_user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>
-	<% @posts.each do |post| %>
-	<article >
-		<p class="title">
-			<%=h post.short_description %>
-		</p>
+<form action="/" method="post" id="postbutton">
+	<section id="shortdesc">
+		<textarea name="short_description" id="shortdesc1" placeholder="Title&hellip;"></textarea>
+	</section>
+	<section id="add">
+		<textarea name="long_description" id="longdesc1" placeholder="Your Post&hellip;"></textarea>		
+	</section>
+	<section id="contact">
+		<textarea name="contact" id="contact1" placeholder="Preferred method of contact&hellip;"></textarea>
+		<input type="submit" value="Post It!" id="postit1" disabled >
+	</section>
+</form>
 
-		<p class="longdescription">		
-			<%=h post.long_description %>
-			<span><a <%= 'style="display:none"' if current_user != post.user %> href="/<%= post.post_id %>">[edit]</a></span>
-	    </p>
-	    <!--<p class="links">
-	    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
-	    </p>-->
-	    
-	    <p class="meta">Created By <%= post.user %>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>> - Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%= post.contact %></p>
+<% current_user = Socket.gethostbyaddr(request.ip.split(".").map {|x| Integer(x)}.pack("CCCC"))[0].to_s[0..-17].capitalize %>
+<% @posts.each do |post| %>
+<article >
+	<p class="title">
+		<%=h post.short_description %>
+	</p>
 
+	<p class="longdescription">		
+		<%=h post.long_description %>
+		<span><a <%= 'style="display:none"' if current_user != post.user %> href="/<%= post.post_id %>">[edit]</a></span>
+    </p>
+    <!--<p class="links">
+    	<a href="/<%= post.post_id %>/complete">&#8623;</a>
+    </p>-->
+    
+    <p class="meta">Created By <a href='user/<%= post.user %>'><%= post.user %></a>: <%= post.posted_date.strftime(fmt="%m/%d/%Y %T") %> <span <%= 'style="display:none"' if post.updated_date == post.posted_date %>> - Updated: <%= post.updated_date.strftime(fmt="%m/%d/%Y %T") %></span><br> Preferred Contact Info: <%= post.contact %></p>
+</article>
+<% end %>
 
-	</article>
-	<% end %>
 
 

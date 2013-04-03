@@ -97,3 +97,12 @@ get '/:post_id/complete' do
 	redirect '/'
 end
 
+get '/user/:user' do
+	@posts = Post.all :user => params[:user], :order => :post_id.desc
+	@post = Post.get :user => params[:user]
+	@title = "My Posts"
+	erb :myposts
+end
+
+
+

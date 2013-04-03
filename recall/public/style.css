@@ -40,11 +40,25 @@ header h2 {
 	color: #999;
 }
 
-#main {
-	margin: 0 0 20px;
+h3 {
+	font-size: 0.8em;
+	color: #888;
 }
 
 
+/*#left {
+	display: inline-block;
+	float: left;
+}*/
+#main {
+	margin: 0 0 20px;
+	display: inline-block;
+
+}
+/*#right {
+	display: inline-block;
+	float: right;
+}*/
 
 #add textarea {
 	height: 30px;
@@ -170,3 +184,4 @@ p.longdescription {
 .error { 
 	color: red; 
 }
+
