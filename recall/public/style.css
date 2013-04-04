@@ -16,7 +16,7 @@ These are some fun changes so that we can test git!!! Weee*/
 
 body {
 	margin: 35px auto;
-	width: 640px;
+	
 }
 
 header {
@@ -45,20 +45,34 @@ h3 {
 	color: #888;
 }
 
-
-/*#left {
-	display: inline-block;
-	float: left;
-}*/
-#main {
-	margin: 0 0 20px;
-	display: inline-block;
-
+#divcontainer{
+	width: 1300px;
+	vertical-align: center;
 }
-/*#right {
+#left {
+ 	display: inline-block;
+ 	width: 325px;
+ 	float: left
+}
+
+
+#divinline {
 	display: inline-block;
-	float: right;
+	width: 640px;
+
+	
+}
+
+/*#main {
+	margin: 0 0 20px;
+
 }*/
+
+#right {
+	display: inline-block;
+	width: 325px;
+	float: right;
+}
 
 #add textarea {
 	height: 30px;
@@ -109,11 +123,6 @@ h3 {
 	margin: -50px 0 0;
 	border: 1px solid #ddd;
 	background: white;
-}
-
-#edit input[type=checkbox] {
-	height: 50px;
-	width: 20px;
 }
 
 article {
@@ -183,5 +192,16 @@ p.longdescription {
 
 .error { 
 	color: red; 
+}
+
+.bubbleInfo {
+    position: inline;
+    float: right;
+}
+
+.popup {
+    position: inline;
+    display: none; /* keeps the popup hidden if no JS available */
+    float: right;
 }
 
